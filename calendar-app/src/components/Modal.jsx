@@ -14,7 +14,6 @@ const Modal = ({isOpen, closeModal, list}) => {
     const [operario2, setOperario2] = useState('');
     const [operario3, setOperario3] = useState('');
     const [ubicacion, setUbicacion] = useState(''); // Nuevo estado para Ubicación
-    const [fechaAsignacion, setFechaAsignacion] = useState(''); // Nuevo estado para Fecha de Asignación
     const [fechaInicio, setFechaInicio] = useState(''); // Nuevo estado para Fecha de Inicio
     const [fechaFin, setFechaFin] = useState(''); // Nuevo estado para Fecha de Finalización
   
@@ -71,123 +70,134 @@ const Modal = ({isOpen, closeModal, list}) => {
         <div className="modal-content">
             <AiOutlineClose  size={30} color="#000000" onClick={closeModal} cursor={"pointer"}/>
             <h2>Nuevo Evento</h2>
-            <form onSubmit={handleSubmit} className="formulario-evento">
-        {/* Campos existentes */}
-        <div className="campo-formulario">
-          <label htmlFor="equipo">Equipo:</label>
-          <input
-            type="text"
-            id="equipo"
-            value={equipo}
-            onChange={(e) => setEquipo(e.target.value)}
-            placeholder="Ingrese el equipo"
-            required // Campo obligatorio
-          />
-        </div>
+            <form onSubmit={handleSubmit} className="formulario-evento mui-form"> {/* Clase mui-form para estilos de formulario MUI */}
+                {/* Campos del formulario - Clases MUI en los contenedores */}
+                <div className="campo-formulario mui-campo">
+                    <label htmlFor="equipo" className="mui-label">Equipo:</label> {/* Clase mui-label para etiquetas MUI */}
+                    <input
+                        type="text"
+                        id="equipo"
+                        value={equipo}
+                        onChange={(e) => setEquipo(e.target.value)}
+                        placeholder="Ingrese el equipo"
+                        required
+                        className="mui-input" // Clase mui-input para inputs MUI
+                    />
+                </div>
 
-        <div className="campo-formulario">
-          <label htmlFor="maquina">Máquina:</label>
-          <input
-            type="text"
-            id="maquina"
-            value={maquina}
-            onChange={(e) => setMaquina(e.target.value)}
-            placeholder="Ingrese la máquina"
-          />
-        </div>
+                <div className="campo-formulario mui-campo">
+                    <label htmlFor="maquina" className="mui-label">Máquina:</label>
+                    <input
+                        type="text"
+                        id="maquina"
+                        value={maquina}
+                        onChange={(e) => setMaquina(e.target.value)}
+                        placeholder="Ingrese la máquina"
+                        className="mui-input"
+                    />
+                </div>
 
-        <div className="campo-formulario">
-          <label htmlFor="destino">Destino:</label>
-          <input
-            type="text"
-            id="destino"
-            value={destino}
-            onChange={(e) => setDestino(e.target.value)}
-            placeholder="Ingrese el destino"
-          />
-        </div>
+                <div className="campo-formulario mui-campo">
+                    <label htmlFor="destino" className="mui-label">Destino:</label>
+                    <input
+                        type="text"
+                        id="destino"
+                        value={destino}
+                        onChange={(e) => setDestino(e.target.value)}
+                        placeholder="Ingrese el destino"
+                        className="mui-input"
+                    />
+                </div>
 
-        <div className="campo-formulario">
-          <label htmlFor="empresaSolicitante">Empresa Solicitante:</label>
-          <input
-            type="text"
-            id="empresaSolicitante"
-            value={empresaSolicitante}
-            onChange={(e) => setEmpresaSolicitante(e.target.value)}
-            placeholder="Ingrese la empresa solicitante"
-          />
-        </div>
+                <div className="campo-formulario mui-campo">
+                    <label htmlFor="empresaSolicitante" className="mui-label">Empresa Solicitante:</label>
+                    <input
+                        type="text"
+                        id="empresaSolicitante"
+                        value={empresaSolicitante}
+                        onChange={(e) => setEmpresaSolicitante(e.target.value)}
+                        placeholder="Ingrese la empresa solicitante"
+                        className="mui-input"
+                    />
+                </div>
 
-        <div className="campo-formulario">
-          <label htmlFor="operario1">Operario 1:</label>
-          <input
-            type="text"
-            id="operario1"
-            value={operario1}
-            onChange={(e) => setOperario1(e.target.value)}
-            placeholder="Ingrese el nombre del operario 1"
-          />
-        </div>
+                {/*
+                <div className="campo-formulario mui-campo">
+                    <label htmlFor="operario1" className="mui-label">Operario 1:</label>
+                    <input
+                        type="text"
+                        id="operario1"
+                        value={operario1}
+                        onChange={(e) => setOperario1(e.target.value)}
+                        placeholder="Ingrese el nombre del operario 1"
+                        className="mui-input"
+                    />
+                </div>
 
-        <div className="campo-formulario">
-          <label htmlFor="operario2">Operario 2:</label>
-          <input
-            type="text"
-            id="operario2"
-            value={operario2}
-            onChange={(e) => setOperario2(e.target.value)}
-            placeholder="Ingrese el nombre del operario 2"
-          />
-        </div>
+                <div className="campo-formulario mui-campo">
+                    <label htmlFor="operario2" className="mui-label">Operario 2:</label>
+                    <input
+                        type="text"
+                        id="operario2"
+                        value={operario2}
+                        onChange={(e) => setOperario2(e.target.value)}
+                        placeholder="Ingrese el nombre del operario 2"
+                        className="mui-input"
+                    />
+                </div>
 
-        <div className="campo-formulario">
-          <label htmlFor="operario3">Operario 3:</label>
-          <input
-            type="text"
-            id="operario3"
-            value={operario3}
-            onChange={(e) => setOperario3(e.target.value)}
-            placeholder="Ingrese el nombre del operario 3"
-          />
-        </div>
+                <div className="campo-formulario mui-campo">
+                    <label htmlFor="operario3" className="mui-label">Operario 3:</label>
+                    <input
+                        type="text"
+                        id="operario3"
+                        value={operario3}
+                        onChange={(e) => setOperario3(e.target.value)}
+                        placeholder="Ingrese el nombre del operario 3"
+                        className="mui-input"
+                    />
+                </div>
+                */ }
 
-        {/* Nuevos campos agregados */}
-        <div className="campo-formulario">
-          <label htmlFor="ubicacion">Ubicación:</label>
-          <input
-            type="text"
-            id="ubicacion"
-            value={ubicacion}
-            onChange={(e) => setUbicacion(e.target.value)}
-            placeholder="Ingrese la ubicación"
-          />
-        </div>
+                <div className="campo-formulario mui-campo">
+                    <label htmlFor="ubicacion" className="mui-label">Ubicación:</label>
+                    <input
+                        type="text"
+                        id="ubicacion"
+                        value={ubicacion}
+                        onChange={(e) => setUbicacion(e.target.value)}
+                        placeholder="Ingrese la ubicación"
+                        className="mui-input"
+                    />
+                </div>
 
-        <div className="campo-formulario">
-          <label htmlFor="fechaInicio">Fecha de Inicio:</label>
-          <input
-            type="datetime-local" // Cambiado a datetime-local para fecha y hora
-            id="fechaInicio"
-            value={fechaInicio}
-            onChange={(e) => setFechaInicio(e.target.value)}
-          />
-        </div>
+                <div className="campo-formulario mui-campo">
+                    <label htmlFor="fechaInicio" className="mui-label">Fecha de Inicio:</label>
+                    <input
+                        type="datetime-local"
+                        id="fechaInicio"
+                        value={fechaInicio}
+                        onChange={(e) => setFechaInicio(e.target.value)}
+                        className="mui-input"
+                    />
+                </div>
 
-        <div className="campo-formulario">
-          <label htmlFor="fechaFin">Fecha de Finalización:</label>
-          <input
-            type="datetime-local" // Cambiado a datetime-local para fecha y hora
-            id="fechaFin"
-            value={fechaFin}
-            onChange={(e) => setFechaFin(e.target.value)}
-          />
-        </div>
+                <div className="campo-formulario mui-campo">
+                    <label htmlFor="fechaFin" className="mui-label">Fecha de Finalización:</label>
+                    <input
+                        type="datetime-local"
+                        id="fechaFin"
+                        value={fechaFin}
+                        onChange={(e) => setFechaFin(e.target.value)}
+                        className="mui-input"
+                    />
+                </div>
 
 
-        <div className="botones-formulario">
-          <button type="submit">Guardar</button>
-          <button type="button" onClick={closeModal}>Cancelar</button>
-        </div>
+                <div className="botones-formulario mui-botones"> {/* Clase mui-botones para estilos de botones MUI */}
+                    <button type="submit" className="mui-button mui-button-primary">Guardar</button> {/* Clases mui-button y mui-button-primary para botón primario MUI */}
+                    <button type="button" onClick={closeModal} className="mui-button mui-button-secondary">Cancelar</button> {/* Clases mui-button y mui-button-secondary para botón secundario MUI */}
+                </div>
             </form>
         </div>
     </div>
