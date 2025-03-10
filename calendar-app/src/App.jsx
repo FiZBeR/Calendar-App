@@ -46,8 +46,11 @@ function App() {
     },
   ]);
 
-  /*Crear useEffect para actualizar el calendario una vez creado el nuevo evento*/
+  const components = {
+    event: props => {
 
+    }
+  }
 
   return (
     <div style={{

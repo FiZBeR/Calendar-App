@@ -20,9 +20,8 @@ const Modal = ({isOpen, closeModal, list}) => {
   
 
     const handleSubmit = (event) => {
-        event.preventDefault(); // Evita la recarga de la página por defecto al enviar
-    
-        // Aquí puedes manejar la lógica de guardar los datos del formulario
+        event.preventDefault(); 
+
         const datosEvento = {
           equipo: equipo,
           maquina: maquina,
@@ -31,19 +30,16 @@ const Modal = ({isOpen, closeModal, list}) => {
           operario1: operario1,
           operario2: operario2,
           operario3: operario3,
-          ubicacion: ubicacion, // Incluye Ubicación en los datos
-          fechaInicio: fechaInicio ? dayjs(fechaInicio).toDate() : null, // Formatea y guarda Fecha de Inicio con dayjs
-          fechaFin: fechaFin ? dayjs(fechaFin).toDate() : null, // Formatea y guarda Fecha de Finalización con dayjs
-        };
-    
-        console.log("Datos del evento a guardar:", datosEvento);
-        const newEvent = {
-            start: fechaInicio,
-            end: fechaFin,
-            title: equipo,
+          ubicacion: ubicacion, 
+          fechaInicio: fechaInicio ? dayjs(fechaInicio).toDate() : null,
+          fechaFin: fechaFin ? dayjs(fechaFin).toDate() : null, 
         };
 
-        list((prevEvents) => [...prevEvents, newEvent]);
+        list((prevEvents) => [...prevEvents, {
+            start: datosEvento.fechaInicio,
+            end: datosEvento.fechaFin,
+            title: datosEvento.equipo,
+        }]);
     
         // Resetea los campos del formulario después de enviar (opcional)
         setEquipo('');
@@ -54,12 +50,11 @@ const Modal = ({isOpen, closeModal, list}) => {
         setOperario2('');
         setOperario3('');
         setUbicacion('');
-        setFechaAsignacion('');
         setFechaInicio('');
         setFechaFin('');
+
+        closeModal();
     
-    
-        alert("Formulario enviado correctamente (revisa la consola para los datos).");
       };
     
 
@@ -195,8 +190,8 @@ const Modal = ({isOpen, closeModal, list}) => {
 
 
                 <div className="botones-formulario mui-botones"> {/* Clase mui-botones para estilos de botones MUI */}
-                    <button type="submit" className="mui-button mui-button-primary">Guardar</button> {/* Clases mui-button y mui-button-primary para botón primario MUI */}
-                    <button type="button" onClick={closeModal} className="mui-button mui-button-secondary">Cancelar</button> {/* Clases mui-button y mui-button-secondary para botón secundario MUI */}
+                    <button type="submit" className="mui-button mui-button-primary" onClick={handleSubmit}>Guardar</button> 
+                    <button type="button" onClick={closeModal} className="mui-button mui-button-secondary">Cancelar</button> 
                 </div>
             </form>
         </div>
