@@ -39,6 +39,9 @@ const Modal = ({isOpen, closeModal, list}) => {
             start: datosEvento.fechaInicio,
             end: datosEvento.fechaFin,
             title: datosEvento.equipo,
+            maquina: datosEvento.maquina,
+            empresa: datosEvento.empresaSolicitante,
+            ubicacion: datosEvento.ubicacion
         }]);
     
         // Resetea los campos del formulario después de enviar (opcional)
